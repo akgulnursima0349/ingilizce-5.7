@@ -102,11 +102,6 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.25);
         }
 
-        .menu-card.locked {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
         .menu-card h3 {
             font-size: 1.6em;
             color: #667eea;
@@ -499,7 +494,7 @@
         <div class="screen" id="menuScreen">
             <div class="header">
                 <h1>🎯 Aktivite Menüsü</h1>
-                <p>Aşağıdaki aktiviteleri sırayla tamamlayarak İngilizce gramer bilginizi pekiştirin!</p>
+                <p>Aşağıdaki aktiviteleri tamamlayarak İngilizce gramer bilginizi pekiştirin!</p>
             </div>
 
             <div class="menu-grid">
@@ -509,44 +504,44 @@
                     <p>Am, Is, Are fiillerini kişi zamirleriyle birlikte öğrenelim ve örnekler görelim.</p>
                 </div>
 
-                <div class="menu-card locked" id="card2">
-                    <span class="status" id="status2">🔒</span>
+                <div class="menu-card" onclick="showScreen('activity2')" id="card2">
+                    <span class="status" id="status2">🔓</span>
                     <h3>2️⃣ Cümle Kurma Pratiği</h3>
                     <p>To Be fiiliyle doğru cümleler kurma alıştırması yapalım.</p>
                 </div>
 
-                <div class="menu-card locked" id="card3">
-                    <span class="status" id="status3">🔒</span>
+                <div class="menu-card" onclick="showScreen('activity3')" id="card3">
+                    <span class="status" id="status3">🔓</span>
                     <h3>3️⃣ Soru Kelimeleri</h3>
                     <p>What, Where, Who, How old gibi soru kelimelerini öğrenelim.</p>
                 </div>
 
-                <div class="menu-card locked" id="card4">
-                    <span class="status" id="status4">🔒</span>
+                <div class="menu-card" onclick="showScreen('activity4')" id="card4">
+                    <span class="status" id="status4">🔓</span>
                     <h3>4️⃣ Soru Sorma Pratik</h3>
                     <p>Soru kelimeleriyle doğru sorular oluşturmayı deneyelim.</p>
                 </div>
 
-                <div class="menu-card locked" id="card5">
-                    <span class="status" id="status5">🔒</span>
+                <div class="menu-card" onclick="showScreen('activity5')" id="card5">
+                    <span class="status" id="status5">🔓</span>
                     <h3>5️⃣ İyelik Sıfatları</h3>
                     <p>My, your, his, her gibi iyelik sıfatlarını tanıyalım.</p>
                 </div>
 
-                <div class="menu-card locked" id="card6">
-                    <span class="status" id="status6">🔒</span>
+                <div class="menu-card" onclick="showScreen('activity6')" id="card6">
+                    <span class="status" id="status6">🔓</span>
                     <h3>6️⃣ Büyük Sınıflandırma</h3>
                     <p>Cümleleri doğru kategorilere ayırarak öğrendiklerimizi pekiştirelim.</p>
                 </div>
 
-                <div class="menu-card locked" id="card7">
-                    <span class="status" id="status7">🔒</span>
+                <div class="menu-card" onclick="showScreen('activity7')" id="card7">
+                    <span class="status" id="status7">🔓</span>
                     <h3>7️⃣ Karışık Pratik</h3>
                     <p>Tüm konuları içeren kapsamlı bir alıştırma yapalım.</p>
                 </div>
 
-                <div class="menu-card locked" id="card8">
-                    <span class="status" id="status8">🔒</span>
+                <div class="menu-card" onclick="showScreen('activity8')" id="card8">
+                    <span class="status" id="status8">🔓</span>
                     <h3>8️⃣ Özet ve Başarı</h3>
                     <p>Öğrendiklerimizi özetleyelim ve başarımızı görelim!</p>
                 </div>
@@ -641,7 +636,7 @@
                     <!-- Kelimeler JavaScript ile eklenecek -->
                 </div>
 
-                <div class="sentence-area" id="sentenceArea">
+                <div class="sentence-area" id="sentenceArea" ondrop="dropOnSentence(event)" ondragover="allowDrop(event)">
                     <!-- Sürüklenen kelimeler buraya gelecek -->
                 </div>
 
@@ -658,7 +653,7 @@
             </div>
 
             <div class="nav-buttons">
-                <button class="btn btn-success" id="continueBtn2" style="display: none;" onclick="completeActivity(2); showScreen('activity3')">Devam Et →</button>
+                <button class="btn btn-success" id="continueBtn2" onclick="completeActivity(2); showScreen('activity3')">Devam Et →</button>
                 <button class="btn btn-secondary" onclick="showScreen('menuScreen')">← Ana Menü</button>
             </div>
         </div>
@@ -753,7 +748,7 @@
             </div>
 
             <div class="nav-buttons">
-                <button class="btn btn-success" id="continueBtn4" style="display: none;" onclick="completeActivity(4); showScreen('activity5')">Devam Et →</button>
+                <button class="btn btn-success" id="continueBtn4" onclick="completeActivity(4); showScreen('activity5')">Devam Et →</button>
                 <button class="btn btn-secondary" onclick="showScreen('menuScreen')">← Ana Menü</button>
             </div>
         </div>
@@ -862,17 +857,17 @@
                 </div>
 
                 <div class="drag-drop-area">
-                    <div class="drop-zone" id="toBeZone" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="drop-zone" id="toBeZone" ondrop="dropOnZone(event)" ondragover="allowDrop(event)">
                         <h3>📌 To Be Fiili Cümleleri</h3>
                         <p style="color: #666; font-size: 1.1em;">am, is, are içeren cümleler</p>
                     </div>
 
-                    <div class="drop-zone" id="questionZone" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="drop-zone" id="questionZone" ondrop="dropOnZone(event)" ondragover="allowDrop(event)">
                         <h3>❓ Soru Cümleleri</h3>
                         <p style="color: #666; font-size: 1.1em;">What, Where, Who, How old ile başlayan sorular</p>
                     </div>
 
-                    <div class="drop-zone" id="possessiveZone" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="drop-zone" id="possessiveZone" ondrop="dropOnZone(event)" ondragover="allowDrop(event)">
                         <h3>🏷️ İyelik Cümleleri</h3>
                         <p style="color: #666; font-size: 1.1em;">my, your, his, her, its, our, their içeren cümleler</p>
                     </div>
@@ -887,7 +882,7 @@
             </div>
 
             <div class="nav-buttons">
-                <button class="btn btn-success" id="continueBtn6" style="display: none;" onclick="completeActivity(6); showScreen('activity7')">Devam Et →</button>
+                <button class="btn btn-success" id="continueBtn6" onclick="completeActivity(6); showScreen('activity7')">Devam Et →</button>
                 <button class="btn btn-secondary" onclick="showScreen('menuScreen')">← Ana Menü</button>
             </div>
         </div>
@@ -920,7 +915,7 @@
             </div>
 
             <div class="nav-buttons">
-                <button class="btn btn-success" id="continueBtn7" style="display: none;" onclick="completeActivity(7); showScreen('activity8')">Devam Et →</button>
+                <button class="btn btn-success" id="continueBtn7" onclick="completeActivity(7); showScreen('activity8')">Devam Et →</button>
                 <button class="btn btn-secondary" onclick="showScreen('menuScreen')">← Ana Menü</button>
             </div>
         </div>
@@ -982,7 +977,8 @@
             currentQuestion: 0,
             currentMixed: 0,
             sentenceBuilt: [],
-            classificationCorrect: false
+            classificationCorrect: false,
+            draggedElement: null
         };
 
         // To Be örnekleri
@@ -1191,15 +1187,6 @@
         function completeActivity(activityNum) {
             state.completed[activityNum] = true;
             document.getElementById('status' + activityNum).textContent = '✅';
-            
-            // Bir sonraki aktiviteyi aç
-            if (activityNum < 8) {
-                const nextCard = document.getElementById('card' + (activityNum + 1));
-                nextCard.classList.remove('locked');
-                nextCard.style.cursor = 'pointer';
-                nextCard.onclick = () => showScreen('activity' + (activityNum + 1));
-            }
-            
             updateProgressBar();
         }
 
@@ -1231,7 +1218,6 @@
 
         // Ses efekti (simülasyon)
         function playSound(type) {
-            // Gerçek uygulamada ses dosyası çalınabilir
             console.log('Playing sound for: ' + type);
         }
 
@@ -1252,12 +1238,17 @@
             // Kelimeleri karıştır
             const shuffled = [...exercise.words].sort(() => Math.random() - 0.5);
             
-            shuffled.forEach(word => {
+            shuffled.forEach((word, index) => {
                 const wordItem = document.createElement('div');
                 wordItem.className = 'word-item';
                 wordItem.draggable = true;
                 wordItem.textContent = word;
-                wordItem.ondragstart = drag;
+                wordItem.id = 'word-' + index;
+                wordItem.addEventListener('dragstart', function(e) {
+                    state.draggedElement = this;
+                    e.dataTransfer.effectAllowed = 'move';
+                    e.dataTransfer.setData('text/html', this.innerHTML);
+                });
                 wordBank.appendChild(wordItem);
             });
             
@@ -1270,34 +1261,58 @@
         // Drag and drop fonksiyonları
         function allowDrop(ev) {
             ev.preventDefault();
-            ev.target.classList.add('drag-over');
+            if (ev.target.classList.contains('sentence-area') || ev.target.classList.contains('drop-zone')) {
+                ev.target.classList.add('drag-over');
+            }
         }
 
-        function drag(ev) {
-            ev.dataTransfer.setData('text', ev.target.textContent);
-            setTimeout(() => ev.target.style.display = 'none', 0);
-        }
-
-        function drop(ev) {
+        function dropOnSentence(ev) {
             ev.preventDefault();
             ev.target.classList.remove('drag-over');
             
-            const data = ev.dataTransfer.getData('text');
-            
-            if (ev.target.classList.contains('sentence-area')) {
+            if (state.draggedElement) {
+                const word = state.draggedElement.textContent;
+                
+                // Yeni kelime öğesi oluştur
                 const wordItem = document.createElement('div');
                 wordItem.className = 'word-item';
-                wordItem.textContent = data;
+                wordItem.textContent = word;
                 wordItem.style.cursor = 'default';
-                ev.target.appendChild(wordItem);
-                state.sentenceBuilt.push(data);
-            } else if (ev.target.classList.contains('drop-zone')) {
-                const wordItem = document.createElement('div');
-                wordItem.className = 'draggable-item';
-                wordItem.textContent = data;
-                wordItem.draggable = false;
-                wordItem.setAttribute('data-category', ev.target.id.replace('Zone', ''));
-                ev.target.appendChild(wordItem);
+                
+                document.getElementById('sentenceArea').appendChild(wordItem);
+                state.sentenceBuilt.push(word);
+                
+                // Orijinal öğeyi gizle
+                state.draggedElement.style.display = 'none';
+                state.draggedElement = null;
+            }
+        }
+
+        function dropOnZone(ev) {
+            ev.preventDefault();
+            ev.target.classList.remove('drag-over');
+            
+            if (state.draggedElement) {
+                const text = state.draggedElement.textContent;
+                const type = state.draggedElement.getAttribute('data-type');
+                
+                // Hedef zone'u bul
+                let targetZone = ev.target;
+                if (!targetZone.classList.contains('drop-zone')) {
+                    targetZone = targetZone.closest('.drop-zone');
+                }
+                
+                if (targetZone) {
+                    const wordItem = document.createElement('div');
+                    wordItem.className = 'draggable-item';
+                    wordItem.textContent = text;
+                    wordItem.draggable = false;
+                    wordItem.setAttribute('data-type', type);
+                    targetZone.appendChild(wordItem);
+                    
+                    state.draggedElement.style.display = 'none';
+                    state.draggedElement = null;
+                }
             }
         }
 
@@ -1370,7 +1385,6 @@
                 feedback.className = 'feedback success show';
                 document.getElementById('nextQuestionBtn').style.display = 'block';
                 
-                // Diğer seçenekleri devre dışı bırak
                 document.querySelectorAll('.quiz-option').forEach(opt => {
                     opt.style.pointerEvents = 'none';
                 });
@@ -1402,20 +1416,23 @@
             const dragItems = document.getElementById('dragItems');
             dragItems.innerHTML = '';
             
-            // Öğeleri karıştır
             const shuffled = [...classificationItems].sort(() => Math.random() - 0.5);
             
-            shuffled.forEach(item => {
+            shuffled.forEach((item, index) => {
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'draggable-item';
                 itemDiv.draggable = true;
                 itemDiv.textContent = item.text;
                 itemDiv.setAttribute('data-type', item.type);
-                itemDiv.ondragstart = drag;
+                itemDiv.id = 'classify-' + index;
+                itemDiv.addEventListener('dragstart', function(e) {
+                    state.draggedElement = this;
+                    e.dataTransfer.effectAllowed = 'move';
+                    e.dataTransfer.setData('text/html', this.innerHTML);
+                });
                 dragItems.appendChild(itemDiv);
             });
             
-            // Bölgeleri temizle
             document.getElementById('toBeZone').querySelectorAll('.draggable-item').forEach(el => el.remove());
             document.getElementById('questionZone').querySelectorAll('.draggable-item').forEach(el => el.remove());
             document.getElementById('possessiveZone').querySelectorAll('.draggable-item').forEach(el => el.remove());
@@ -1441,12 +1458,12 @@
             
             const feedback = document.getElementById('classificationFeedback');
             
-            if (allCorrect && document.getElementById('dragItems').children.length === 0) {
+            if (allCorrect && document.getElementById('dragItems').querySelectorAll('.draggable-item:not([style*="display: none"])').length === 0) {
                 feedback.textContent = '🎉 Mükemmel! Tüm cümleleri doğru sınıflandırdın!';
                 feedback.className = 'feedback success show';
                 state.classificationCorrect = true;
                 document.getElementById('continueBtn6').style.display = 'inline-block';
-            } else if (document.getElementById('dragItems').children.length > 0) {
+            } else if (document.getElementById('dragItems').querySelectorAll('.draggable-item:not([style*="display: none"])').length > 0) {
                 feedback.textContent = '⚠️ Tüm cümleleri kutulara sürüklemelisin!';
                 feedback.className = 'feedback error show';
             } else {
@@ -1528,22 +1545,15 @@
             state.sentenceBuilt = [];
             state.classificationCorrect = false;
             
-            // Tüm kartları kilitle
-            for (let i = 2; i <= 8; i++) {
-                document.getElementById('card' + i).classList.add('locked');
-                document.getElementById('status' + i).textContent = '🔒';
-            }
-            
-            // İlk kartı aç
-            document.getElementById('status1').textContent = '🔓';
-            
             showScreen('introScreen');
         }
 
         // Sayfa yüklendiğinde
         window.onload = function() {
-            // İlk kartı tıklanabilir yap
-            document.getElementById('card1').onclick = () => showScreen('activity1');
+            // Tüm kartları tıklanabilir yap
+            for (let i = 1; i <= 8; i++) {
+                document.getElementById('card' + i).onclick = () => showScreen('activity' + i);
+            }
         };
     </script>
 </body>
